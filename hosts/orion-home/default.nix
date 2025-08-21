@@ -16,7 +16,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "orion-home"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -25,6 +25,10 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  networking.extraHosts = ''
+    127.0.0.1 orion-home localhost
+  '';
 
   # Set your time zone.
   time.timeZone = "Europe/Rome";

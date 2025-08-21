@@ -17,18 +17,15 @@
   #
   # =========================
 	description = "Semma OS, reusable nix os configuration for ghost0r10n";
-	homepage = "Your mom's house";
-	license = "MIT";
-	authors = [ "Fabio Capocasale <fabio.capocasale@orionware.io>" ];
-	maintainers = [ "ghost0r10n" ];
 
 	#VARS
 	inputs.nixpkgs.url ="github:NixOS/nixpkgs/nixos-25.05";
 	inputs.home-manager.url = "github:nix-community/home-manager/release-25.05";
     inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
-	inputs.lazyvim-start.url = "github:LazyVim/starter";
+	inputs.lazyvim-starter.url = "github:LazyVim/starter";
+	inputs.lazyvim-starter.flake = false;   # <-- IMPORTANT
 
-	outputs = {self, nixpkgs}:
+	outputs = {self, nixpkgs, lazyvim-starter, home-manager}:
 		let 
 			configVersion = "0.1.0";
 			system = "x86_64";#TODO understand how to make it work based on the current architecture
@@ -99,7 +96,7 @@
 		  #------------------------------------ DEV SHELL -------------------------------------------
 
 			#Handy for hacking in this repository
-			devShells.${system}.default = pkmgs.mkShell {
+			devShells.${system}.default = pkgs.mkShell {
 				#Uses the same common packages as the system
 				buildInputs = (import ./modules/common-pkgs.nix { inherit pkgs; });
 			};
