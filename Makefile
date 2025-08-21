@@ -1,2 +1,2 @@
-rebuild:
-	cat /etc/hostname && sudo nixos-rebuild switch --flake .#$1
+rebuild-home:
+	sudo nixos-rebuild switch --flake .#orion-home --impure

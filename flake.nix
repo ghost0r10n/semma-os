@@ -41,11 +41,12 @@
 				inherit system;
 
 				specialArgs = { inherit lazyvim-starter; };
-				
+        
+
 				modules = [
 					./hosts/orion-home/default.nix
 					./modules/common.nix
-					./modules/common-pkgs.nix
+
 					#Home manager as nixOs module
 					home-manager.nixosModules.home-manager
 					
@@ -57,7 +58,7 @@
 						
 					    home-manager.users.ghost0r10n = {pkgs, ...}:{
 							home.stateVersion = "25.05";
-							xdg.configFile."nvim".source = lazyvim-starter;
+							xdg.configFile."nvim".source = ./dotfiles/nvim;
 						};
 
 				

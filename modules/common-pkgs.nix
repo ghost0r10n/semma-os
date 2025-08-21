@@ -1,15 +1,4 @@
-# ==============================================
-# Common packages (minimal defaults)
-# ==============================================
-# One list used by:
-#  - Host system (environment.systemPackages)
-#  - Docker image (images/docker-image.nix)
-#  - Dev shell (flake devShell)
-#
-# Keep this lean; we can add more as we go.
-# ==============================================
-
-{ pkgs }:
+{ pkgs, ... }:
 with pkgs; [
   # Editors
   vim            # primary editor (Shitty version)
