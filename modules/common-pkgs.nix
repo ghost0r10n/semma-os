@@ -36,5 +36,8 @@ with pkgs; [
   gcc                     # compile treesitter parsers, LSPs, etc.
   gnumake                 # build tools some plugins expect
   unzip                   # already in common, but harmless here too
+
+  #Let's fuzzy find this bitch
+  fzf
 ]
 
