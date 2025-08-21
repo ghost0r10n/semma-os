@@ -17,10 +17,10 @@
   #
   # =========================
 	description = "Semma OS, reusable nix os configuration for ghost0r10n";
-	homepage = "Your mom's house"
-	license = "MIT"
-	authors = [ "Fabio Capocasale <fabio.capocasale@orionware.io>" ]
-	maintainers = [ "ghost0r10n" ]
+	homepage = "Your mom's house";
+	license = "MIT";
+	authors = [ "Fabio Capocasale <fabio.capocasale@orionware.io>" ];
+	maintainers = [ "ghost0r10n" ];
 
 	#VARS
 	inputs.nixpkgs.url ="github:NixOS/nixpkgs/nixos-25.05";
@@ -43,7 +43,7 @@
 			orion-home = nixpkgs.lib.nixosSystem {
 				inherit system;
 
-				specialArgs = { inherit lazyvim-starter; }
+				specialArgs = { inherit lazyvim-starter; };
 				
 				modules = [
 					./hosts/orion-home/default.nix
@@ -73,7 +73,7 @@
 			liveusb = nixpkgs.lib.nixosSystem {
 				inherit system;
 
-				specialArgs = { inherit lazyvim-starter; }
+				specialArgs = { inherit lazyvim-starter; };
 
 				modules = [
 					./modules/common.nix
@@ -102,10 +102,11 @@
 			devShells.${system}.default = pkmgs.mkShell {
 				#Uses the same common packages as the system
 				buildInputs = (import ./modules/common-pkgs.nix { inherit pkgs; });
-			}
+			};
 
 			#------------------------------------------------------------------------------------------
 
 		};
+	};
 
 }
