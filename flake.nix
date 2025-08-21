@@ -59,6 +59,20 @@
 					    home-manager.users.ghost0r10n = {pkgs, ...}:{
 							home.stateVersion = "25.05";
 							xdg.configFile."nvim".source = ./dotfiles/nvim;
+              # Alacritty configs
+              programs.alacritty = {
+                enable = true;
+                settings = {
+                  font = {
+                    normal = { family = "FiraCode Nerd Font"; style = "Regular"; };
+                    bold   = { family = "FiraCode Nerd Font"; style = "Bold"; };
+                    italic = { family = "FiraCode Nerd Font"; style = "Italic"; };
+                    size = 11.0;
+                  };
+                  window = { opacity = 0.95; padding = { x = 8; y = 8; }; };
+                  shell = { program = "/run/current-system/sw/bin/zsh"; args = [ "-l" ]; };
+                };
+              };
 						};
 
 				

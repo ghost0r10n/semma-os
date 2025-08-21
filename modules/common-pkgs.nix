@@ -7,6 +7,7 @@ with pkgs; [
 
   # Version control
   git
+  lazygit
 
   # Networking & transfers
   curl
