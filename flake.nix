@@ -44,8 +44,10 @@
 				
 				modules = [
 					./hosts/orion-home/default.nix
+					./modules/common.nix
+					./modules/common-pkgs.nix
 					#Home manager as nixOs module
-					home-manager.nixosModule.home-manager
+					home-manager.nixosModules.home-manager
 					
 					#Create a symlink for lazyvim
 					{
