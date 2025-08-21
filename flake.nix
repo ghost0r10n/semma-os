@@ -55,7 +55,15 @@
 					
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "backup";
+	      home-manager.users.ghost0r10n = {
+	      	              # Required by HM; bump if HM warns about it
+		      home.stateVersion = "25.05";
+
+		      xdg.configFile."nvim".source = ./dotfiles/nvim;
+
+		      # (Optional) Home-managed per-user packages (keep light; OS handles most)
+		      home.packages = [ ];
+	      };
 				
 					}	
 				];

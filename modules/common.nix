@@ -19,12 +19,9 @@
     vimAlias = true;
   };
 
-  # System packages (CLI, shared)
-  environment.systemPackages = import ./common-pkgs.nix { inherit pkgs; };
 
   # Desktop stack (Wayland/Hyprland essentials, audio, portals)
   programs.hyprland.enable = true;
-  services.xserver.enable = false;
   programs.xwayland.enable = true;
 
   xdg.portal.enable = true;
@@ -54,8 +51,7 @@
   ];
 
   # Pull in GUI/desktop packages for hosts that import this module
-  environment.systemPackages = (import ./common-pkgs.nix { inherit pkgs; });
-  environment.systemPackages = (import ./desktop-pkgs.nix { inherit pkgs; });
+  environment.systemPackages = (import ./common-pkgs.nix { inherit pkgs; }) ++ (import ./desktop-pkgs.nix { inherit pkgs; });
 
   # NixOS state baseline
   system.stateVersion = "25.05";

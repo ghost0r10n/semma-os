@@ -5,7 +5,7 @@ with pkgs; [
   waybar rofi-wayland wlogout
 
   # Wayland helpers
-  wl-clipboard grim slurp swappy
+  wl-clipboard grim slurp swappy 
 
   # Portals (also configured in system)
   xdg-desktop-portal-gtk xdg-desktop-portal-hyprland

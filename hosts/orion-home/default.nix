@@ -76,6 +76,20 @@
     ];
   };
 
+  services.greetd = {
+    enable = true;
+
+    settings = {
+      terminal.vt = 1;
+
+      default_session = {
+        user = "ghost0r10n";
+        command = "Hyprland";
+      };
+    };
+  };
+
+
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "ghost0r10n";
 
@@ -90,5 +104,5 @@
 
 
   # HOME MANAGER SETUP
-  home-manager.users.ghost0r10n = import ./home.nix
+  home-manager.users.ghost0r10n = import ./home.nix;
 }
