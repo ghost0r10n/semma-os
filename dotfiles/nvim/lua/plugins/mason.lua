@@ -22,6 +22,9 @@ return {
         "gopls",            -- Go
         "rust_analyzer",    -- Rust (works fine even if you use rustup)
         "jdtls",            -- Java (needs a JDK on PATH)
+        "nixpkgs-fmt",
+        "nix-fmt",
+        "rnix-lsp"
       },
       automatic_installation = true,
     },

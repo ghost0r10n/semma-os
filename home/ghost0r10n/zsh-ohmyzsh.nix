@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -16,7 +15,7 @@
       path = "$HOME/.zsh_history";
     };
 
-    initContent= ''
+    initContent = ''
       setopt HIST_IGNORE_ALL_DUPS
       setopt SHARE_HISTORY
       bindkey -e
@@ -26,7 +25,7 @@
       alias vim='nvim'
       alias vi='nvim'
 
-     
+
       #-------- JAVA SETUP --------
       export JAVA_HOME="${pkgs.jdk21}/lib/openjdk"
       export PATH="$JAVA_HOME/bin:$PATH"
@@ -38,4 +37,3 @@
   # Tool for the fzf plugin
   home.packages = [ pkgs.fzf ];
 }
-

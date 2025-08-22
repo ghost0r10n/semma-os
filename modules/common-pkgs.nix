@@ -1,9 +1,9 @@
 { pkgs, ... }:
 with pkgs; [
   # Editors
-  vim            # primary editor (Shitty version)
-  neovim     	 # (https://www.youtube.com/watch?v=lPk_zyRKs1Q)
-  nano           # simple fallback editor
+  vim # primary editor (Shitty version)
+  neovim # (https://www.youtube.com/watch?v=lPk_zyRKs1Q)
+  nano # simple fallback editor
 
   # Version control
   git
@@ -27,7 +27,6 @@ with pkgs; [
   # Data wrangling
   jq
 
-  
   #-------- DEV LIBS --------
   python3
   jdk17
@@ -38,16 +37,15 @@ with pkgs; [
   #--------------------------
 
   # --- Helpers LazyVim commonly expects ---
-  ripgrep                 # :Telescope live_grep / builtin grep
-  fd                      # faster file-finder (used by telescope)
-  nodejs                  # node provider (treesitter parsers, some plugins)
+  ripgrep # :Telescope live_grep / builtin grep
+  fd # faster file-finder (used by telescope)
+  nodejs # node provider (treesitter parsers, some plugins)
 
-  python3Packages.pynvim  # python client for nvim (provider)
-  gcc                     # compile treesitter parsers, LSPs, etc.
-  gnumake                 # build tools some plugins expect
-  unzip                   # already in common, but harmless here too
+  python3Packages.pynvim # python client for nvim (provider)
+  gcc # compile treesitter parsers, LSPs, etc.
+  gnumake # build tools some plugins expect
+  unzip # already in common, but harmless here too
 
   #Let's fuzzy find this bitch
   fzf
 ]
-

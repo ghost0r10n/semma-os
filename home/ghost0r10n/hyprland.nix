@@ -1,44 +1,41 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
 
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
 
       #-------- ENV --------
-      env = [
-        "WLR_NO_HARDWARE_CURSORS,1"
-        "XCURSOR_SIZE,24"
-      ];
+      env = [ "WLR_NO_HARDWARE_CURSORS,1" "XCURSOR_SIZE,24" ];
       #---------------------
 
       #--------------------- ANIMATIONS ---------------------
       animations = {
-          enabled=true;
-          bezier = [
-            "fast, 0.2, 0.5, 0.2, 1.0"     # fast ease-out
-            "pop,  0.34, 1.56, 0.64, 1.0"  # springy pop
-            "lin,  0.00, 0.00, 1.00, 1.00" # linear
-          ];
-          # NOTE: lower duration => faster feel
-          animation = [
-            "windows,         1, 3, fast, slide"     # window open/move
-            "windowsOut,      1, 3, fast, slide"     # window close
-            "border,          1, 4, lin"             # border color change
-            "fade,            1, 3, fast"            # fade on focus/close
-            "workspaces,      1, 4, fast, slide"     # workspace change
-            "specialWorkspace,1, 4, fast, slide"
-          ];
+        enabled = true;
+        bezier = [
+          "fast, 0.2, 0.5, 0.2, 1.0" # fast ease-out
+          "pop,  0.34, 1.56, 0.64, 1.0" # springy pop
+          "lin,  0.00, 0.00, 1.00, 1.00" # linear
+        ];
+        # NOTE: lower duration => faster feel
+        animation = [
+          "windows,         1, 3, fast, slide" # window open/move
+          "windowsOut,      1, 3, fast, slide" # window close
+          "border,          1, 4, lin" # border color change
+          "fade,            1, 3, fast" # fade on focus/close
+          "workspaces,      1, 4, fast, slide" # workspace change
+          "specialWorkspace,1, 4, fast, slide"
+        ];
 
       };
       #------------------------------------------------------
       "$mod" = "ALT";
+
       bind = [
 
         "$mod, RETURN, exec, alacritty"
         "$mod, D, exec, rofi -show drun"
         "$mod, Q, killactive,"
- 
+
         #-------- WORKSPACE SELECTION --------
         # workspace select (<leader>+1..9,0)
         "$mod, 1, workspace, 1"
@@ -69,10 +66,10 @@
 
         #-------- MOVEMENT WINDOWS --------
         # Focus windows directionally (Vim keys)
-        "$mod, j, movefocus, l"  # focus left
-        "$mod, k, movefocus, d"  # focus down
-        "$mod, l, movefocus, u"  # focus up
-        "$mod, ;, movefocus, r"  # focus right
+        "$mod, j, movefocus, l" # focus left
+        "$mod, k, movefocus, d" # focus down
+        "$mod, l, movefocus, u" # focus up
+        "$mod, ;, movefocus, r" # focus right
 
         # Focus windows directionally (arrow keys) 
         "$mod, left,  movefocus, l"
@@ -88,14 +85,14 @@
         #----------------------------------
 
       ];
-      bindm = [
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-      ];
+      bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
       input.kb_layout = "us";
-      general = { gaps_in = 3; gaps_out = 8; border_size = 1; };
+      general = {
+        gaps_in = 3;
+        gaps_out = 8;
+        border_size = 1;
+      };
       decoration.rounding = 8;
     };
   };
 }
-

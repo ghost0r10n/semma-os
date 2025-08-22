@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   # Nix CLI + flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -10,6 +9,7 @@
   # User shell
   programs.zsh.enable = true;
   users.users.ghost0r10n.shell = pkgs.zsh;
+  users.users.ghost0r10n.extraGroups = [ "docker" ];
 
   # Neovim globally + aliases
   programs.neovim = {
@@ -19,16 +19,13 @@
     vimAlias = true;
   };
 
-
   # Desktop stack (Wayland/Hyprland essentials, audio, portals)
   programs.hyprland.enable = true;
   programs.xwayland.enable = true;
 
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-gtk
-    pkgs.xdg-desktop-portal-hyprland
-  ];
+  xdg.portal.extraPortals =
+    [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
 
   security.rtkit.enable = true;
   services.pipewire = {
@@ -51,9 +48,9 @@
   ];
 
   # Pull in GUI/desktop packages for hosts that import this module
-  environment.systemPackages = (import ./common-pkgs.nix { inherit pkgs; }) ++ (import ./desktop-pkgs.nix { inherit pkgs; });
+  environment.systemPackages = (import ./common-pkgs.nix { inherit pkgs; })
+    ++ (import ./desktop-pkgs.nix { inherit pkgs; });
 
   # NixOS state baseline
   system.stateVersion = "25.05";
 }
-

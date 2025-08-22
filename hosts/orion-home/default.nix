@@ -2,12 +2,12 @@
 
 {
   # Enable experimental features (flakes and nix command)
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  imports =
-    [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-      ../../modules/common.nix
-    ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  imports = [
+    # Include the results of the hardware scan.
+    /etc/nixos/hardware-configuration.nix
+    ../../modules/common.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -65,15 +65,15 @@
     pulse.enable = true;
   };
 
-
   users.users.ghost0r10n = {
     isNormalUser = true;
     description = "ghost0r10n";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    ];
+    packages = with pkgs;
+      [
+        kdePackages.kate
+        #  thunderbird
+      ];
   };
 
   services.greetd = {
@@ -89,7 +89,6 @@
     };
   };
 
-
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "ghost0r10n";
 
@@ -97,13 +96,9 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    bluez
-    blueman
-  ];
+  environment.systemPackages = with pkgs; [ bluez blueman ];
 
   system.stateVersion = "25.05"; # Did you read the comment?
-
 
   # HOME MANAGER SETUP
   home-manager.users.ghost0r10n = import ./home.nix;
@@ -122,5 +117,5 @@
       };
     };
   };
-   services.blueman.enable = true;
+  services.blueman.enable = true;
 }
