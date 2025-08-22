@@ -29,7 +29,7 @@
     let
       configVersion = "0.1.0";
       system =
-        "x86_64"; # TODO understand how to make it work based on the current architecture
+        "x86_64-linux"; # TODO understand how to make it work based on the current architecture
       pkgs = import nixpkgs {
         inherit system;
       }; # import package set for the current system
@@ -86,28 +86,23 @@
 
         #------------------------------------------------------------------------------------------
 
-        #------------------------------------ DOCKER ---------------------------------------------
-
-        # TODO understand the system what implications has here
-        packages.${system}.dockerImage = import ./images/docker-image.nix {
-          inherit pkgs;
-          configVersion = configVersion;
-          nvimConfig = lazyvim-starter;
-        };
-
-        #------------------------------------------------------------------------------------------
-
-        #------------------------------------ DEV SHELL -------------------------------------------
-
-        #Handy for hacking in this repository
-        devShells.${system}.default = pkgs.mkShell {
-          #Uses the same common packages as the system
-          buildInputs = (import ./modules/common-pkgs.nix { inherit pkgs; });
-        };
-
-        #------------------------------------------------------------------------------------------
-
       };
+      #------------------------------------ DOCKER ---------------------------------------------
+      # TODO understand the system what implications has here
+      packages.${system}.dockerImage = import ./images/docker-image.nix {
+        inherit pkgs;
+        configVersion = configVersion;
+        nvimConfig = lazyvim-starter;
+      };
+      #------------------------------------------------------------------------------------------
+
+      #------------------------------------ DEV SHELL -------------------------------------------
+      #Handy for hacking in this repository
+      devShells.${system}.default = pkgs.mkShell {
+        #Uses the same common packages as the system
+        buildInputs = (import ./modules/common-pkgs.nix { inherit pkgs; });
+      };
+      #------------------------------------------------------------------------------------------
     };
 
 }

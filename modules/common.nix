@@ -9,7 +9,6 @@
   # User shell
   programs.zsh.enable = true;
   users.users.ghost0r10n.shell = pkgs.zsh;
-  users.users.ghost0r10n.extraGroups = [ "docker" ];
 
   # Neovim globally + aliases
   programs.neovim = {
@@ -53,4 +52,10 @@
 
   # NixOS state baseline
   system.stateVersion = "25.05";
+
+  #-------- DOCKER --------
+  virtualisation.docker.enable = true;
+  users.users.ghost0r10n.extraGroups = [ "docker" ];
+  #------------------------
+
 }
