@@ -6,7 +6,7 @@
 
     oh-my-zsh = {
       enable = true;
-      theme = "agnoster";
+      theme = "af-magic";
       plugins = [ "git" "sudo" "z" "colored-man-pages" "extract" "fzf" "tmux" ];
     };
 

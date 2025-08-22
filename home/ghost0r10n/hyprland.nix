@@ -2,7 +2,12 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+
     settings = {
+
+      #-------- STARTUP PROGRAMS --------
+      exec-once = [ "${pkgs.waybar}/bin/waybar" ];
+      #----------------------------------
 
       #-------- ENV --------
       env = [ "WLR_NO_HARDWARE_CURSORS,1" "XCURSOR_SIZE,24" ];
