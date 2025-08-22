@@ -1,8 +1,17 @@
 { pkgs, ... }:
 {
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
+
+      #-------- ENV --------
+      env = [
+        "WLR_NO_HARDWARE_CURSORS,1"
+        "XCURSOR_SIZE,24"
+      ];
+      #---------------------
+
       #--------------------- ANIMATIONS ---------------------
       animations = {
           enabled=true;

@@ -27,11 +27,21 @@ with pkgs; [
   # Data wrangling
   jq
 
+  
+  #-------- DEV LIBS --------
+  python3
+  jdk17
+  jdk21
+  rustup
+  maven
+  go
+  #--------------------------
+
   # --- Helpers LazyVim commonly expects ---
   ripgrep                 # :Telescope live_grep / builtin grep
   fd                      # faster file-finder (used by telescope)
   nodejs                  # node provider (treesitter parsers, some plugins)
-  python3                 # python provider
+
   python3Packages.pynvim  # python client for nvim (provider)
   gcc                     # compile treesitter parsers, LSPs, etc.
   gnumake                 # build tools some plugins expect

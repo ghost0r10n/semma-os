@@ -25,6 +25,13 @@
       alias gs='git status -sb'
       alias vim='nvim'
       alias vi='nvim'
+
+     
+      #-------- JAVA SETUP --------
+      export JAVA_HOME="${pkgs.jdk21}/lib/openjdk"
+      export PATH="$JAVA_HOME/bin:$PATH"
+      alias mv17i='JAVA_HOME=${pkgs.jdk17}/lib/openjdk mvn clean install'
+      #----------------------------
     '';
   };
 
