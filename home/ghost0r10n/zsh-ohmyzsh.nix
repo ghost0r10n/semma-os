@@ -16,7 +16,7 @@
       path = "$HOME/.zsh_history";
     };
 
-    initExtra = ''
+    initContent= ''
       setopt HIST_IGNORE_ALL_DUPS
       setopt SHARE_HISTORY
       bindkey -e

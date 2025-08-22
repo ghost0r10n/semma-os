@@ -98,6 +98,8 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    bluez
+    blueman
   ];
 
   system.stateVersion = "25.05"; # Did you read the comment?
@@ -105,4 +107,20 @@
 
   # HOME MANAGER SETUP
   home-manager.users.ghost0r10n = import ./home.nix;
+
+  #Bluetooth settings
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    package = pkgs.bluez;
+    settings = {
+      General = {
+        Name = "ghost0r10n-home-pc";
+        ControllerMode = "dual";
+        AutoEnable = "true";
+        Experimental = "true";
+      };
+    };
+  };
+   services.blueman.enable = true;
 }

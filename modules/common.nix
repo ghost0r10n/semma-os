@@ -42,7 +42,7 @@
   services.dbus.enable = true;
   security.polkit.enable = true;
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Nerd Fonts (new split namespace)
   fonts.packages = with pkgs; [

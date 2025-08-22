@@ -7,23 +7,23 @@
       animations = {
           enabled=true;
           bezier = [
-            "fast, 0.2, 0.9, 0.2, 1.0"     # fast ease-out
+            "fast, 0.2, 0.5, 0.2, 1.0"     # fast ease-out
             "pop,  0.34, 1.56, 0.64, 1.0"  # springy pop
             "lin,  0.00, 0.00, 1.00, 1.00" # linear
           ];
           # NOTE: lower duration => faster feel
           animation = [
-            "windows,         1, 5, fast, slide"     # window open/move
-            "windowsOut,      1, 5, fast, slide"     # window close
-            "border,          1, 6, lin"             # border color change
-            "fade,            1, 5, fast"            # fade on focus/close
-            "workspaces,      1, 6, fast, slide"     # workspace change
-            "specialWorkspace,1, 6, fast, slide"
+            "windows,         1, 3, fast, slide"     # window open/move
+            "windowsOut,      1, 3, fast, slide"     # window close
+            "border,          1, 4, lin"             # border color change
+            "fade,            1, 3, fast"            # fade on focus/close
+            "workspaces,      1, 4, fast, slide"     # workspace change
+            "specialWorkspace,1, 4, fast, slide"
           ];
 
       };
       #------------------------------------------------------
-      "$mod" = "SUPER";
+      "$mod" = "ALT";
       bind = [
 
         "$mod, RETURN, exec, alacritty"
@@ -60,10 +60,10 @@
 
         #-------- MOVEMENT WINDOWS --------
         # Focus windows directionally (Vim keys)
-        "$mod, h, movefocus, l"  # focus left
-        "$mod, j, movefocus, d"  # focus down
-        "$mod, k, movefocus, u"  # focus up
-        "$mod, l, movefocus, r"  # focus right
+        "$mod, j, movefocus, l"  # focus left
+        "$mod, k, movefocus, d"  # focus down
+        "$mod, l, movefocus, u"  # focus up
+        "$mod, ;, movefocus, r"  # focus right
 
         # Focus windows directionally (arrow keys) 
         "$mod, left,  movefocus, l"
@@ -72,10 +72,10 @@
         "$mod, right, movefocus, r"
 
         # Move the focused window in a direction
-        "$mod SHIFT, h, movewindow, l"
-        "$mod SHIFT, j, movewindow, d"
-        "$mod SHIFT, k, movewindow, u"
-        "$mod SHIFT, l, movewindow, r"
+        "$mod SHIFT, j, movewindow, l"
+        "$mod SHIFT, k, movewindow, d"
+        "$mod SHIFT, l, movewindow, u"
+        "$mod SHIFT, ;, movewindow, r"
         #----------------------------------
 
       ];
