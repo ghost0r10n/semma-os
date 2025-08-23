@@ -1,6 +1,15 @@
 { config, pkgs, ... }:
 
 {
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware = {
+    graphics.enable = true;
+    nvidia.open = true; # Use the new open-source module for Turing GPUs
+    # Optionally choose driver branch:
+    # nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
+  };
   # Enable experimental features (flakes and nix command)
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports = [
