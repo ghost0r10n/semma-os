@@ -29,6 +29,8 @@ with pkgs; [
 
   #-------- DEV LIBS --------
   python3
+  python3.pkgs.pip
+
   jdk17
   jdk21
   rustup
@@ -36,6 +38,21 @@ with pkgs; [
   nodejs_20
   xdg-utils
   go
+
+  #VPN STUFF
+  #
+  openconnect
+  python3Packages.pycairo
+  ninja
+  meson
+  cairo
+  cairo.dev
+  gtk3
+  webkitgtk
+  gobject-introspection
+  pkg-config
+  glib-networking
+  cacert
   #--------------------------
 
   # --- Helpers LazyVim commonly expects ---

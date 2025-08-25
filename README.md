@@ -120,6 +120,10 @@ assets/
 
 ---
 
+## 📝 Notes
+
+- For vpn scripts like globaprotect.sh use first the start-vpn-shell script
+
 ## 📝 License
 
 MIT. Do whatever you want, just don’t blame me when it eats your homework.

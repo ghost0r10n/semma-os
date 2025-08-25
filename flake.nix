@@ -63,6 +63,7 @@
                 home.stateVersion = "25.05";
 
                 xdg.configFile."nvim".source = ./dotfiles/nvim;
+                xdg.configFile."vpn".source = ./dotfiles/vpn;
 
                 # (Optional) Home-managed per-user packages (keep light; OS handles most)
                 home.packages = [ ];
