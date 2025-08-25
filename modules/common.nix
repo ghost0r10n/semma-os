@@ -48,6 +48,8 @@
   ];
 
   # Pull in GUI/desktop packages for hosts that import this module
+  environment.sessionVariables.COPILOT_NODE_COMMAND =
+    "${pkgs.nodejs_20}/bin/node";
   environment.systemPackages = (import ./common-pkgs.nix { inherit pkgs; })
     ++ (import ./desktop-pkgs.nix { inherit pkgs; });
 

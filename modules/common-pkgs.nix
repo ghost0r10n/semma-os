@@ -33,13 +33,14 @@ with pkgs; [
   jdk21
   rustup
   maven
+  nodejs_20
+  xdg-utils
   go
   #--------------------------
 
   # --- Helpers LazyVim commonly expects ---
   ripgrep # :Telescope live_grep / builtin grep
   fd # faster file-finder (used by telescope)
-  nodejs # node provider (treesitter parsers, some plugins)
 
   python3Packages.pynvim # python client for nvim (provider)
   gcc # compile treesitter parsers, LSPs, etc.
