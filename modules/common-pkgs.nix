@@ -30,7 +30,7 @@ with pkgs; [
   #-------- DEV LIBS --------
   python3
   python3.pkgs.pip
-
+  k9s
   jdk17
   jdk21
   rustup
@@ -38,6 +38,9 @@ with pkgs; [
   nodejs_20
   xdg-utils
   go
+  azure-cli
+  kubectl
+  kubelogin
 
   #VPN STUFF
   #
@@ -66,4 +69,7 @@ with pkgs; [
 
   #Let's fuzzy find this bitch
   fzf
+
+  #audio
+  pavucontrol
 ]
