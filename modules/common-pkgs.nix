@@ -39,6 +39,7 @@ with pkgs; [
   xdg-utils
   go
 
+  mesa-demos
   #VPN STUFF
   #
   openconnect

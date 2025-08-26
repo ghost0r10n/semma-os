@@ -25,6 +25,7 @@
   inputs.lazyvim-starter.url = "github:LazyVim/starter";
   inputs.lazyvim-starter.flake = false; # <-- IMPORTANT
 
+  #BITCHASS
   outputs = { self, nixpkgs, lazyvim-starter, home-manager }:
     let
       configVersion = "0.1.0";

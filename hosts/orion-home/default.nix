@@ -6,7 +6,13 @@
 
   hardware = {
     graphics.enable = true;
-    nvidia.open = true; # Use the new open-source module for Turing GPUs
+    nvidia.open = false; # Use the new open-source module for Turing GPUs
+    nvidia.modesetting.enable = true;
+    nvidia.powerManagement.enable = true;
+    nvidia.prime = {
+      nvidiaBusId = "PCI:0a:00:0"; # per la GTX 1660 SUPER (controlla bus id!)
+      offload.enable = false;
+    };
     # Optionally choose driver branch:
     # nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
   };
@@ -21,8 +27,10 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.blacklistedKernelModules = [ "nouveau" ];
 
   networking.hostName = "orion-home"; # Define your hostname.
+
   networking.networkmanager.enable = true;
 
   networking.extraHosts = ''

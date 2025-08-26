@@ -50,6 +50,11 @@
   # Pull in GUI/desktop packages for hosts that import this module
   environment.sessionVariables.COPILOT_NODE_COMMAND =
     "${pkgs.nodejs_20}/bin/node";
+  environment.sessionVariables.GBM_BACKEND = "nvidia-drm";
+  environment.sessionVariables.__GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  environment.sessionVariables.__GL_GSYNC_ALLOWED = "0";
+  environment.sessionVariables.__GL_VRR_ALLOWED = "0";
+
   environment.systemPackages = (import ./common-pkgs.nix { inherit pkgs; })
     ++ (import ./desktop-pkgs.nix { inherit pkgs; });
 
