@@ -84,9 +84,9 @@
 
         # Move the focused window in a direction
         "$mod SHIFT, j, movewindow, l"
-        "$mod SHIFT, k, movewindow, d"
+        "$mod SHIFT, ;, movewindow, d"
         "$mod SHIFT, l, movewindow, u"
-        "$mod SHIFT, ;, movewindow, r"
+        "$mod SHIFT, k, movewindow, r"
         #----------------------------------
 
       ];

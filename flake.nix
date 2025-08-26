@@ -29,7 +29,7 @@
     let
       configVersion = "0.1.0";
       system =
-        "x86_64"; # TODO understand how to make it work based on the current architecture
+        "x86_64-linux"; # TODO understand how to make it work based on the current architecture
       pkgs = import nixpkgs {
         inherit system;
       }; # import package set for the current system
@@ -39,6 +39,61 @@
       # Main hosts configuration (Office and home)
       nixosConfigurations = {
         #------------------------------------ PHYSICAL SYSTEMS ------------------------------------
+	#Office host
+        orion-office = nixpkgs.lib.nixosSystem {
+          inherit system;
+
+          specialArgs = { inherit lazyvim-starter; };
+
+          modules = [
+            ./hosts/orion-office/default.nix
+            ./modules/common.nix
+
+            #Home manager as nixOs module
+            home-manager.nixosModules.home-manager
+
+            #Create a symlink for lazyvim
+            {
+
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.ghost0r10n = {
+                # Required by HM; bump if HM warns about it
+                home.stateVersion = "25.05";
+
+                xdg.configFile."nvim".source = ./dotfiles/nvim;
+                xdg.configFile."vpn".source = ./dotfiles/vpn;
+                xdg.configFile."kanshi/config".text = ''
+                    profile ultrawide {
+                      output DP-1 mode 5120x1440@60Hz position 0,0 scale 1
+                    }
+                  '';
+
+                  # Servizio systemd *utente* in Home Manager
+                  systemd.user.services.kanshi = {
+                    Unit = {
+                      Description = "kanshi daemon";
+                      After = [ "graphical-session.target" ];
+                      PartOf = [ "graphical-session.target" ];
+                    };
+                    Service = {
+                      Type = "simple";
+                      ExecStart = "${pkgs.kanshi}/bin/kanshi -c %h/.config/kanshi/config";
+                      Restart = "on-failure";
+                    };
+                    Install = {
+                      WantedBy = [ "graphical-session.target" ];
+                    };
+                  };
+
+                # (Optional) Home-managed per-user packages (keep light; OS handles most)
+                home.packages = [ ];
+              };
+
+            }
+          ];
+        };
+
 
         #Home pc
         orion-home = nixpkgs.lib.nixosSystem {

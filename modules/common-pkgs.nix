@@ -27,6 +27,10 @@ with pkgs; [
   # Data wrangling
   jq
 
+
+  # Video
+  kanshi
+
   #-------- DEV LIBS --------
   python3
   python3.pkgs.pip
