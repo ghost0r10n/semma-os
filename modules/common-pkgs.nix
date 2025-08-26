@@ -34,7 +34,7 @@ with pkgs; [
   #-------- DEV LIBS --------
   python3
   python3.pkgs.pip
-
+  jdt-language-server
   jdk17
   jdk21
   rustup
@@ -42,6 +42,11 @@ with pkgs; [
   nodejs_20
   xdg-utils
   go
+  flutter
+  vscodium
+  clang
+  cmake
+  ninja
 
   #VPN STUFF
   #

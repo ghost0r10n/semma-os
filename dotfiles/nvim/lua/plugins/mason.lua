@@ -1,14 +1,24 @@
--- Mason: install LSPs / formatters / DAPs automatically
+-- ~/.config/nvim/lua/plugins/mason.lua
 return {
   -- Core manager
-  { "williamboman/mason.nvim",
+  {
+    "williamboman/mason.nvim",
+    lazy = false,            -- <— load at startup
+    priority = 1001,         -- make sure it’s available early
     opts = {
       ui = { border = "rounded" },
+      -- PATH = "skip",      -- (optional on NixOS) keep system PATH if you prefer
     },
   },
 
   -- LSPs via mason-lspconfig
-  { "williamboman/mason-lspconfig.nvim",
+  {
+    "williamboman/mason-lspconfig.nvim",
+    lazy = false,            -- <— load at startup
+    dependencies = {
+      "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
     opts = {
       ensure_installed = {
         -- core
@@ -17,45 +27,46 @@ return {
         "html", "cssls",
 
         -- languages you asked for
-        "pyright",          -- Python (or "basedpyright")
-        "ruff_lsp",         -- Python linting
-        "gopls",            -- Go
-        "rust_analyzer",    -- Rust (works fine even if you use rustup)
-        "jdtls",            -- Java (needs a JDK on PATH)
-        "nixpkgs-fmt",
-        "nix-fmt",
-        "rnix-lsp"
+        "pyright",
+        "ruff_lsp",
+        "gopls",
+        "rust_analyzer",
+        "jdtls",                 -- Java (Mason-managed)
+        "rnix-lsp",
+        -- formatters belong to mason-null-ls (kept below)
       },
       automatic_installation = true,
     },
   },
 
-  -- Formatters / linters via none-ls (null-ls) + Mason bridge
-  { "jay-babu/mason-null-ls.nvim",
+  -- Formatters / linters (unchanged)
+  {
+    "jay-babu/mason-null-ls.nvim",
     dependencies = { "nvimtools/none-ls.nvim" },
     opts = {
       ensure_installed = {
-        "stylua",            -- Lua formatter
+        "stylua",
         "shfmt", "shellcheck",
-        "prettierd",         -- web stuff
-        "ruff", "black",     -- Python
-        "google_java_format",-- Java formatter
-        "golines", "gofumpt",-- Go formatters
+        "prettierd",
+        "ruff", "black",
+        "google_java_format",
+        "golines", "gofumpt",
         "codespell",
       },
       automatic_installation = true,
-      handlers = {}, -- let LazyVim/none-ls pick them up
+      handlers = {},
     },
   },
 
-  -- Debuggers via Mason
-  { "jay-babu/mason-nvim-dap.nvim",
+  -- DAPs (unchanged)
+  {
+    "jay-babu/mason-nvim-dap.nvim",
     opts = {
       ensure_installed = {
-        "debugpy",           -- Python
-        "delve",             -- Go
-        "codelldb",          -- Rust/C/C++
-        "java-debug-adapter",-- Java
+        "debugpy",
+        "delve",
+        "codelldb",
+        "java-debug-adapter",
         "js-debug-adapter",
       },
       automatic_installation = true,
