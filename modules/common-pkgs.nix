@@ -27,10 +27,15 @@ with pkgs; [
   # Data wrangling
   jq
 
+
+  # Video
+  kanshi
+
   #-------- DEV LIBS --------
   python3
   python3.pkgs.pip
   k9s
+  jdt-language-server
   jdk17
   jdk21
   rustup
@@ -41,6 +46,11 @@ with pkgs; [
   azure-cli
   kubectl
   kubelogin
+  flutter
+  vscodium
+  clang
+  cmake
+  ninja
 
   #VPN STUFF
   #

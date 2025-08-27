@@ -24,6 +24,7 @@
       alias gs='git status -sb'
       alias vim='nvim'
       alias vi='nvim'
+      alias mvn17build='JAVA_HOME=/nix/store/$(ls /nix/store | grep openjdk-17 | head -n 1) mvn clean install'
 
 
       #-------- JAVA SETUP --------
