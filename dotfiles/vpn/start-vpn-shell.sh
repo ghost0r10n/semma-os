@@ -2,6 +2,8 @@ nix-shell -p \
   'python312.withPackages (ps: [ ps.pygobject3 ])' \
   gtk3 webkitgtk gobject-introspection pkg-config glib-networking cacert mesa xorg.xvfb \
   --run 'bash -c "
+    export WEBKIT_DISABLE_DMABUF_RENDERER=1
+    export GDK_SCALE=${GDK_SCALE:-1}
     export GDK_BACKEND=x11
     export GIO_EXTRA_MODULES=$(nix eval --raw nixpkgs#glib-networking)/lib/gio/modules
     export SSL_CERT_FILE=$(nix eval --raw nixpkgs#cacert)/etc/ssl/certs/ca-bundle.crt
