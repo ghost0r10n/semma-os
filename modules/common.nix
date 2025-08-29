@@ -1,6 +1,7 @@
 { config, pkgs, ... }: {
   # Nix CLI + flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  programs.nix-ld.enable = true;
 
   # Basic locale/time
   time.timeZone = "Europe/Rome";

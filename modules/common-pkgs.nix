@@ -51,6 +51,11 @@ with pkgs; [
   clang
   cmake
   ninja
+  docker
+  lsof
+
+  # Quarkus CLI
+  quarkus
 
   #VPN STUFF
   #
