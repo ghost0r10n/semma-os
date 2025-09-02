@@ -31,7 +31,13 @@
       #-------- JAVA SETUP --------
       export JAVA_HOME="${pkgs.jdk21}/lib/openjdk"
       export PATH="$JAVA_HOME/bin:$PATH"
+      #----------------------------
+      
+      #-------- MY-ALIASES --------
       alias mv17i='JAVA_HOME=${pkgs.jdk17}/lib/openjdk mvn clean install'
+      alias f='fzf'
+      alias fw='fzf ~/work'
+      alias fm='fzf ~/dev'
       #----------------------------
     '';
   };

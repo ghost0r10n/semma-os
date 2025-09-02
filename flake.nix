@@ -63,6 +63,7 @@
 
                 xdg.configFile."nvim".source = ./dotfiles/nvim;
                 xdg.configFile."vpn".source = ./dotfiles/vpn;
+                xdg.configFile."dumb-shells".source = ./dotfiles/dumb-shells;
                 xdg.configFile."kanshi/config".text = ''
                     profile ultrawide {
                       output DP-1 mode 5120x1440@60Hz position 0,0 scale 1
@@ -119,6 +120,7 @@
 
                 xdg.configFile."nvim".source = ./dotfiles/nvim;
                 xdg.configFile."vpn".source = ./dotfiles/vpn;
+                xdg.configFile."dumb-shells".source = ./dotfiles/dumb-shells;
 
                 # (Optional) Home-managed per-user packages (keep light; OS handles most)
                 home.packages = [ ];

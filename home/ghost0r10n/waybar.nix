@@ -12,8 +12,8 @@
       #---------------------------------
 
       #-------- MODULES -------- 
-      modules-left = [ "hyprland/workspaces" "window" ];
-      modules-center = [ "clock" ];
+      modules-left = [ "hyprland/workspaces" "custom/window" ];
+      modules-center = [ "clock" "custom/notes"];
       modules-right =
         [ "cpu" "memory" "network" "pulseaudio" "battery" "tray" ];
       #--------------------------
@@ -28,7 +28,7 @@
         active-only = false;
         all-outputs = true;
       };
-      "window" = {
+      "custom/window" = {
         max-lenght = 60;
         icon = true;
       };
@@ -41,6 +41,15 @@
         # optional: full info on hover
         # tooltip-format = "{:%A, %d %B %Y  %H:%M:%S}";
       };
+
+      "custom/notes" = {
+          format = "󱞁 {}"; # bar text; will be clamped to one line via CSS if desired
+          exec = "/usr/bin/env bash ~/.config/dumb-shells/notes.sh"; # prints last 5 notes
+          on-click = "alacritty -e nvim ~/tmp/notes.txt";
+          interval = 10;
+          tooltip = true;
+          tooltip-format = "{}"; # tooltip shows full output (last 5 notes)
+        };
       #--------------------------------
 
       #-------- LEFT MODULES --------
