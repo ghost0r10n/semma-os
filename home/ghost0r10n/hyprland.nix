@@ -36,7 +36,7 @@
       "$mod" = "ALT";
 
       bind = [
-
+        "$mod, F, togglefloating"
         "$mod, RETURN, exec, alacritty"
         "$mod, D, exec, rofi -show drun"
         "$mod, Q, killactive,"

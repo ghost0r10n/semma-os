@@ -31,6 +31,8 @@ with pkgs; [
   # Video
   kanshi
 
+  showmethekey
+
   #-------- DEV LIBS --------
   python3
   python3.pkgs.pip
@@ -53,6 +55,7 @@ with pkgs; [
   ninja
   docker
   lsof
+  gcc
 
   # Quarkus CLI
   quarkus

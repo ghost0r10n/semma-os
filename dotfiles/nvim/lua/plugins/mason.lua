@@ -3,8 +3,8 @@ return {
   -- Core manager
   {
     "williamboman/mason.nvim",
-    lazy = false,            -- <— load at startup
-    priority = 1001,         -- make sure it’s available early
+    lazy = false, -- <— load at startup
+    priority = 1001, -- make sure it’s available early
     opts = {
       ui = { border = "rounded" },
       -- PATH = "skip",      -- (optional on NixOS) keep system PATH if you prefer
@@ -14,7 +14,7 @@ return {
   -- LSPs via mason-lspconfig
   {
     "williamboman/mason-lspconfig.nvim",
-    lazy = false,            -- <— load at startup
+    lazy = false, -- <— load at startup
     dependencies = {
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig",
@@ -22,16 +22,22 @@ return {
     opts = {
       ensure_installed = {
         -- core
-        "lua_ls", "jsonls", "yamlls", "marksman", "bashls",
-        "dockerls", "docker_compose_language_service",
-        "html", "cssls",
+        "lua_ls",
+        "jsonls",
+        "yamlls",
+        "marksman",
+        "bashls",
+        "dockerls",
+        "docker_compose_language_service",
+        "html",
+        "cssls",
 
         -- languages you asked for
         "pyright",
         "ruff_lsp",
         "gopls",
         "rust_analyzer",
-        "jdtls",                 -- Java (Mason-managed)
+        "jdtls", -- Java (Mason-managed)
         "rnix-lsp",
         -- formatters belong to mason-null-ls (kept below)
       },
@@ -46,12 +52,15 @@ return {
     opts = {
       ensure_installed = {
         "stylua",
-        "shfmt", "shellcheck",
+        "shfmt",
+        "shellcheck",
         "prettierd",
-        "ruff", "black",
+        "ruff",
+        "black",
         "google_java_format",
-        "golines", "gofumpt",
-        "codespell",
+        "golines",
+        "gofumpt",
+        --"codespell",
       },
       automatic_installation = true,
       handlers = {},
@@ -74,4 +83,3 @@ return {
     },
   },
 }
-
