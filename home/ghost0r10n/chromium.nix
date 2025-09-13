@@ -1,0 +1,47 @@
+{ pkgs, ... }: {
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+
+    oh-my-zsh = {
+      enable = true;
+      theme = "af-magic";
+      plugins = [ "git" "sudo" "z" "colored-man-pages" "extract" "fzf" "tmux" ];
+    };
+
+    history = {
+      size = 10000;
+      path = "$HOME/.zsh_history";
+    };
+
+    initContent = ''
+      setopt HIST_IGNORE_ALL_DUPS
+      setopt SHARE_HISTORY
+      bindkey -e
+      alias ls='ls --color=auto'
+      alias ll='ls -lah'
+      alias gs='git status -sb'
+      alias vim='nvim'
+      alias vi='nvim'
+      alias mvn17build='JAVA_HOME=/nix/store/$(ls /nix/store | grep openjdk-17 | head -n 1) mvn clean install'
+      export PATH=/home/ghost0r10n/.opencode/bin:$PATH
+
+
+      #-------- JAVA SETUP --------
+      export JAVA_HOME="${pkgs.jdk21}/lib/openjdk"
+      export PATH="$JAVA_HOME/bin:$PATH"
+      #----------------------------
+      
+      #-------- MY-ALIASES --------
+      alias mv17i='JAVA_HOME=${pkgs.jdk17}/lib/openjdk mvn clean install'
+      alias f='fzf'
+      alias fw='fzf ~/work'
+      alias fm='fzf ~/dev'
+      #----------------------------
+    '';
+  };
+
+  # Tool for the fzf plugin
+  home.packages = [ pkgs.fzf ];
+}

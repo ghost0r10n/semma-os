@@ -27,7 +27,6 @@ with pkgs; [
   # Data wrangling
   jq
 
-
   # Video
   kanshi
 
@@ -56,6 +55,7 @@ with pkgs; [
   docker
   lsof
   gcc
+  chromium
 
   # Quarkus CLI
   quarkus
