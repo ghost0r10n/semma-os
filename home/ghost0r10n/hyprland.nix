@@ -40,6 +40,7 @@
         "$mod, RETURN, exec, alacritty"
         "$mod, D, exec, rofi -show drun"
         "$mod, Q, killactive,"
+        "$mod, L, exec, swaylock"
 
         #-------- WORKSPACE SELECTION --------
         # workspace select (<leader>+1..9,0)
@@ -93,11 +94,11 @@
       bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
       input.kb_layout = "us";
       general = {
-        gaps_in = 3;
+        gaps_in = 5;
         gaps_out = 8;
         border_size = 1;
       };
-      decoration.rounding = 8;
+      decoration.rounding = 6;
     };
   };
 }
