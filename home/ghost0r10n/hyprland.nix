@@ -41,7 +41,7 @@
       bind = [
         "$mod, F, togglefloating"
         "$mod, RETURN, exec, alacritty"
-        "$mod, D, exec, rofi -show drun"
+        "$mod, D, exec, rofi -show drun -theme dark"
         "$mod, Q, killactive,"
         "$mod, L, exec, swaylock"
 

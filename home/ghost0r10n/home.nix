@@ -3,6 +3,7 @@
   imports = [
     ./alacritty.nix
     ./hyprland.nix
+    ./rofi.nix
     ./swaylock.nix
     ./zsh-ohmyzsh.nix
     ./waybar.nix
