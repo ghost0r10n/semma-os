@@ -6,7 +6,10 @@
     settings = {
 
       #-------- STARTUP PROGRAMS --------
-      exec-once = [ "${pkgs.waybar}/bin/waybar" ];
+      exec-once = [ 
+        "${pkgs.waybar}/bin/waybar"
+        "$HOME/.local/bin/welcome-on-unlock &"
+      ];
       #----------------------------------
 
       #-------- ENV --------

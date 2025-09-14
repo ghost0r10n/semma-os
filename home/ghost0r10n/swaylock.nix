@@ -1,48 +1,84 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: 
+let
+  welcomeScript = pkgs.writeShellScript "welcome-master" ''
+    ${pkgs.libnotify}/bin/notify-send -t 3000 -u normal "🔓 Access Granted" "Welcome back, master"
+  '';
+in {
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
     settings = {
+      # Background and effects - instant blur
       screenshots = true;
+      effect-blur = "10x5";
+      effect-vignette = "0.2:0.8";
+      fade-in = 0;
+      grace = 0;
+      
+      # Clock
       clock = true;
-      indicator = true;
-      indicator-radius = 100;
-      indicator-thickness = 7;
-      effect-blur = "7x5";
-      effect-vignette = "0.5:0.5";
-      ring-color = "a6e3a1";
-      key-hl-color = "a6e3a1";
-      line-color = "00000000";
-      inside-color = "00000088";
-      separator-color = "00000000";
-      grace = 2;
-      grace-no-mouse = true;
-      grace-no-touch = true;
-      datestr = "%A, %d %B %Y";
+      datestr = "%A, %d %B %Y";  
       timestr = "%H:%M";
-      fade-in = 0.2;
       font = "FiraCode Nerd Font";
-      font-size = 24;
-      text-color = "cad3f5";
+      font-size = 32;
+      text-color = "b794f6";
+      
+      # Transparent circle with lock icon
+      indicator = true;
+      indicator-radius = 150;
+      indicator-thickness = 10;
+      
+      # TRANSPARENT CIRCLE with purple typing feedback
+      inside-color = "00000000";        # Completely transparent
+      ring-color = "b794f655";          # Subtle purple ring 
+      line-color = "00000000";          # Transparent line
+      key-hl-color = "b794f6ff";        # PURPLE when typing!
+      separator-color = "00000000";     # Transparent separator
+      
+      # Password state colors - purple theme
+      inside-wrong-color = "00000000";   # Stay transparent
+      ring-wrong-color = "ff0000";       # RED ring when wrong
+      text-wrong-color = "ffffff";       # WHITE text
+      
+      inside-clear-color = "00000000";   # Stay transparent
+      ring-clear-color = "b794f6";       # PURPLE ring clearing
+      text-clear-color = "b794f6";       # PURPLE text
+      
+      inside-ver-color = "00000000";     # Stay transparent  
+      ring-ver-color = "b794f6";         # PURPLE ring verifying
+      text-ver-color = "b794f6";         # PURPLE text
+      
+      # Show typing feedback
+      show-failed-attempts = true;
+      
+      # Hide layout crap
+      show-keyboard-layout = false;
+      hide-keyboard-layout = true;
+      disable-caps-lock-text = true;
       layout-bg-color = "00000000";
       layout-border-color = "00000000";
-      layout-text-color = "cad3f5";
-      line-uses-ring = false;
-      ring-uses-inside = true;
-      inside-wrong-color = "f38ba8";
-      ring-wrong-color = "f38ba8";
-      inside-clear-color = "f9e2af";
-      ring-clear-color = "f9e2af";
-      inside-ver-color = "89b4fa";
-      ring-ver-color = "89b4fa";
-      text-wrong-color = "f38ba8";
-      text-ver-color = "89b4fa";
-      text-clear-color = "f9e2af";
-      bs-hl-color = "f38ba8";
-      caps-lock-key-hl-color = "f9e2af";
-      caps-lock-bs-hl-color = "f38ba8";
-      disable-caps-lock-text = true;
-      text-caps-lock-color = "f9e2af";
+      layout-text-color = "00000000";
     };
+  };
+  
+  # Simple notification on desktop startup (simulates unlock welcome)
+  home.file.".local/bin/welcome-on-unlock" = {
+    text = ''
+      #!/bin/bash
+      # Watch for swaylock process ending and show notification
+      while true; do
+        if pgrep swaylock > /dev/null; then
+          # Wait for swaylock to exit
+          while pgrep swaylock > /dev/null; do
+            sleep 0.5
+          done
+          # Show notification after unlock
+          ${welcomeScript}
+          sleep 5  # Prevent spam
+        fi
+        sleep 1
+      done
+    '';
+    executable = true;
   };
 }
