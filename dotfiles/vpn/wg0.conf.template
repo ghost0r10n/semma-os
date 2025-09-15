@@ -1,0 +1,21 @@
+# WireGuard configuration template
+# Copy this to /etc/wireguard/wg0.conf and edit with your values
+#
+# Generate keys with:
+#   wg genkey | tee privatekey | wg pubkey > publickey
+#
+# Usage:
+#   sudo wg-quick up wg0    # connect
+#   sudo wg-quick down wg0  # disconnect
+#   wg show                 # check status
+
+[Interface]
+PrivateKey = YOUR_PRIVATE_KEY_HERE
+Address = 10.100.0.2/24
+DNS = 1.1.1.1, 8.8.8.8
+
+[Peer]
+PublicKey = SERVER_PUBLIC_KEY_HERE
+Endpoint = your.server.com:51820
+AllowedIPs = 0.0.0.0/0
+PersistentKeepalive = 25

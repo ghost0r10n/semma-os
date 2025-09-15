@@ -35,6 +35,7 @@
     [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
 
   security.rtkit.enable = true;
+  services.resolved.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -59,6 +60,12 @@
     "${pkgs.nodejs_20}/bin/node";
   environment.systemPackages = (import ./common-pkgs.nix { inherit pkgs; })
     ++ (import ./desktop-pkgs.nix { inherit pkgs; });
+
+  # WireGuard VPN (manual control with wg-quick)
+  networking.wireguard.enable = true;
+  networking.firewall = {
+    allowedUDPPorts = [ 51820 ]; # WireGuard default port
+  };
 
   # ZSA Keyboard support (Ergodox EZ, Moonlander, Planck EZ, Voyager)
   users.groups.plugdev = {};

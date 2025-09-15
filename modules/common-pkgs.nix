@@ -33,6 +33,8 @@ with pkgs; [
   showmethekey
 
   #-------- DEV LIBS --------
+  postgresql
+  dbeaver-bin
   python3
   python3.pkgs.pip
   k9s
@@ -63,6 +65,8 @@ with pkgs; [
   #VPN STUFF
   #
   openconnect
+  wireguard-tools
+  wireguard-ui
   python3Packages.pycairo
   ninja
   meson
