@@ -12,6 +12,12 @@
   users.users.ghost0r10n.shell = pkgs.zsh;
   users.users.ghost0r10n.extraGroups = [ "docker" "plugdev" ];
 
+  # Docker configuration
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+  };
+
   # Neovim globally + aliases
   programs.neovim = {
     enable = true;

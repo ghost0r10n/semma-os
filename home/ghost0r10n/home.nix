@@ -8,5 +8,6 @@
     ./zsh-ohmyzsh.nix
     ./waybar.nix
     ./tmux.nix
+    ./docker.nix
   ];
 }
