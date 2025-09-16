@@ -43,7 +43,7 @@
         "$mod, RETURN, exec, alacritty"
         "$mod, D, exec, rofi -show drun -theme dark"
         "$mod, Q, killactive,"
-        "$mod, L, exec, swaylock"
+        "SUPER, L, exec, swaylock"
 
         #-------- WORKSPACE SELECTION --------
         # workspace select (<leader>+1..9,0)
