@@ -2,7 +2,7 @@
 return {
   -- Core manager
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     lazy = false, -- <— load at startup
     priority = 1001, -- make sure it’s available early
     opts = {
@@ -13,10 +13,10 @@ return {
 
   -- LSPs via mason-lspconfig
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     lazy = false, -- <— load at startup
     dependencies = {
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
       "neovim/nvim-lspconfig",
     },
     opts = {

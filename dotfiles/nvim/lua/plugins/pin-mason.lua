@@ -1,5 +1,5 @@
--- Temporarily pin Mason to 1.x (pre-breaking changes)
+-- Mason with updated org names (no version pinning)
 return {
-  { "williamboman/mason.nvim",            version = "^1.0.0" },
-  { "williamboman/mason-lspconfig.nvim",  version = "^1.0.0" },
+  { "mason-org/mason.nvim" },
+  { "mason-org/mason-lspconfig.nvim" },
 }
