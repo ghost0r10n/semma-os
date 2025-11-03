@@ -34,6 +34,14 @@
 
   hardware = {
     graphics.enable = true;
+    opengl = {
+        enable=true;
+        driSupport32Bit = true;        # 32-bit GL/Vulkan for Proton
+        extraPackages = with pkgs; [ mesa.drivers ];
+        extraPackages32 = with pkgs.pkgsi686Linux; [ mesa.drivers ];
+      };
+
+
     nvidia.open = true; # Use the new open-source module for Turing GPUs
     # Optionally choose driver branch:
     # nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;

@@ -43,7 +43,7 @@ with pkgs; [
   jdk21
   rustup
   maven
-  nodejs_20
+  nodejs_22
   xdg-utils
   go
   azure-cli
@@ -94,4 +94,8 @@ with pkgs; [
 
   #audio
   pavucontrol
+
+  #messaging
+  signal-desktop
+  steam
 ]
