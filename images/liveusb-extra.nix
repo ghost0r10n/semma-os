@@ -3,6 +3,13 @@
   networking.networkmanager.enable = true;
   hardware.enableAllFirmware = true;
 
+  networking.wireless.networks = {
+    "TIM-33567366" = {
+        psk = "xYhFCDFbCF2YU3G392NFENxU";
+      };
+
+  };
+
   environment.etc."skel/.config/nvim".source = lazyvim-starter;
 
   system.activationScripts.lazyvimForRoot = lib.stringAfter [ "users" ]

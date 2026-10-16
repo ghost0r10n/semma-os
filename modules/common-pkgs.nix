@@ -1,6 +1,7 @@
 { pkgs, ... }:
 with pkgs; [
   # Editors
+  obsidian
   vim # primary editor (Shitty version)
   neovim # (https://www.youtube.com/watch?v=lPk_zyRKs1Q)
   nano # simple fallback editor
@@ -8,6 +9,7 @@ with pkgs; [
   # Version control
   git
   lazygit
+  lazydocker
 
   # Networking & transfers
   curl
@@ -26,6 +28,9 @@ with pkgs; [
 
   # Data wrangling
   jq
+
+  # Database tools
+  mongodb-compass
 
   # Video
   kanshi
@@ -57,7 +62,11 @@ with pkgs; [
   docker
   lsof
   gcc
+  stdenv.cc.cc.lib
+  glibc
   chromium
+  zlib
+
 
   # Quarkus CLI
   quarkus
@@ -67,6 +76,7 @@ with pkgs; [
   openconnect
   wireguard-tools
   wireguard-ui
+  tailscale
   python3Packages.pycairo
   ninja
   meson
@@ -98,4 +108,5 @@ with pkgs; [
   #messaging
   signal-desktop
   steam
+  spotify
 ]

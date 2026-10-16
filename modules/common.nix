@@ -2,6 +2,12 @@
   # Nix CLI + flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib
+    stdenv.cc.cc
+    glibc
+    zlib
+  ];
 
   # Basic locale/time
   time.timeZone = "Europe/Rome";
@@ -63,8 +69,25 @@
 
   # WireGuard VPN (manual control with wg-quick)
   networking.wireguard.enable = true;
+
+  # Tailscale (mesh VPN). Plain client: no subnet routing / exit node.
+  # Authenticate once per machine with: sudo tailscale up
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
+
   networking.firewall = {
-    allowedUDPPorts = [ 51820 ]; # WireGuard default port
+    allowedUDPPorts = [
+      51820 # WireGuard default port
+      config.services.tailscale.port # Tailscale direct connections (UDP 41641)
+    ];
+
+    # Traffic inside the tailnet is already authenticated/encrypted
+    trustedInterfaces = [ config.services.tailscale.interfaceName ];
+
+    # Needed so return traffic on the tailscale interface is not dropped
+    checkReversePath = "loose";
   };
 
   # ZSA Keyboard support (Ergodox EZ, Moonlander, Planck EZ, Voyager)

@@ -60,6 +60,15 @@
 
   networking.hostName = "orion-office"; # Define your hostname.
   networking.networkmanager.enable = true;
+  
+  networking.wireless.networks = {
+    "TIM-33567366" = {
+        psk = "xYhFCDFbCF2YU3G392NFENxU";
+      };
+
+  };
+
+
 
   networking.extraHosts = ''
     127.0.0.1 orion-office localhost
